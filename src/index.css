@@ -17,7 +17,7 @@ main {
   display: flex;
   align-items: center;
   height: 65px;
-  background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+  background: linear-gradient(90deg, #254d75 1.18%, #405ac4 100%);
   color: white;
   padding: 20px;
   justify-content: center;
@@ -57,10 +57,14 @@ main {
   grid-column: 1 / -1;
   font-family: "Karla", sans-serif;
   border-radius: 5px;
-  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  background: linear-gradient(90.41deg, #254d75 1.14%, #405ac4 100%);
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.form--button:hover {
+  background: linear-gradient(90.41deg, #17314a 1.14%, #283879 100%);
 }
 
 
@@ -119,10 +123,14 @@ main {
   font-family: "Karla", sans-serif;
   padding: 20px;
   border-radius: 5px;
-  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  background: linear-gradient(90.41deg, #254d75 1.14%, #405ac4 100%);
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.download--button:hover {
+  background: linear-gradient(90.41deg, #17314a 1.14%, #283879 100%);
 }
 
 .disclaimer {
