@@ -124,3 +124,16 @@ main {
   border: none;
   cursor: pointer;
 }
+
+.disclaimer {
+  display: flex;
+  margin-top: 200px;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.disclaimer--trollface{
+  width: 35px;
+  margin-left: 10px;
+}

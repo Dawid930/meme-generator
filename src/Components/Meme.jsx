@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react"
 import downloadjs from "downloadjs"
 import html2canvas from "html2canvas"
+import image from "../Images/troll-face.png"
 
 
 export default function Meme() {
@@ -22,10 +23,7 @@ export default function Meme() {
             .then(data => setAllMemes(data.data.memes))
     }, [])
     
-    
-    
-    
-    
+
     function getMemeImage() {
         const randomNumber = Math.floor(Math.random() * allMemes.length)
         const url = allMemes[randomNumber].url
@@ -33,9 +31,9 @@ export default function Meme() {
             ...prevMeme,
             randomImage: url
         }))
-        
     }
     
+
     function handleChange(event) {
         const {name, value} = event.target
         setMeme(prevMeme => ({
@@ -44,15 +42,14 @@ export default function Meme() {
         }))
     }
 
-    const handleCaptureClick = useCallback(async () => {
-        const memeElement = document.querySelector('.meme')
-        if(!memeElement) return;
 
+    const handleCaptureClick = useCallback(async () => {
         const canvas = await html2canvas(memeImg.current, {allowTaint : true, useCORS : true})
         const dataURL = canvas.toDataURL('image/jpg')
         downloadjs(dataURL, 'download.jpg', 'image/jpg')
     }, [])
     
+
     return (
         <main>
             <div className="form">
@@ -90,6 +87,10 @@ export default function Meme() {
                     onClick={handleCaptureClick}>
                     Download meme
                 </button>
+            </div>
+            <div className="disclaimer">
+                <p>Pictures are provided by third party (https://imgflip.com). I do not take any resposibility for security related risks.</p>
+                <img src= {image} className="disclaimer--trollface" alt="trollface"/>
             </div>
         </main>
     )
