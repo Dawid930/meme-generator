@@ -1,9 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import downloadjs from "downloadjs"
 import html2canvas from "html2canvas"
 
 
 export default function Meme() {
+
+    const memeImg = useRef(null)
+
     const [meme, setMeme] = useState({
         topText: "",
         bottomText: "",
@@ -45,7 +48,7 @@ export default function Meme() {
         const memeElement = document.querySelector('.meme')
         if(!memeElement) return;
 
-        const canvas = await html2canvas(memeElement)
+        const canvas = await html2canvas(memeImg.current, {allowTaint : true, useCORS : true})
         const dataURL = canvas.toDataURL('image/jpg')
         downloadjs(dataURL, 'download.jpg', 'image/jpg')
     }, [])
@@ -76,7 +79,7 @@ export default function Meme() {
                     Get a new meme image 🖼
                 </button>
             </div>
-            <div className="meme">
+            <div className="meme" ref={memeImg}>
                 <img name='memeimg' src={meme.randomImage} className="meme--image" alt="memeimg"/>
                 <h2 className="meme--text top">{meme.topText}</h2>
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
