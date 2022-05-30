@@ -89,7 +89,7 @@ export default function Meme() {
                 </button>
             </div>
             <div className="disclaimer">
-                <p>Pictures are provided by third party (https://imgflip.com). I do not take any resposibility for security related risks.</p>
+                <p>Pictures are provided by third party (https://imgflip.com). I do not take any responsibility for security related risks.</p>
                 <img src= {image} className="disclaimer--trollface" alt="trollface"/>
             </div>
         </main>
