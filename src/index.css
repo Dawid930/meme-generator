@@ -8,6 +8,8 @@ body {
 }
 
 main {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 36px;
 }
 
@@ -61,6 +63,7 @@ main {
   cursor: pointer;
 }
 
+
 .meme {
   position: relative;
   display: flex;
@@ -103,4 +106,21 @@ main {
 
 .top {
   top: 0;
+}
+.downloadButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.download--button {
+  display: flex;
+  font-family: "Karla", sans-serif;
+  padding: 20px;
+  border-radius: 5px;
+  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
 }

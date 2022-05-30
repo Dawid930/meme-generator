@@ -1,16 +1,19 @@
-import React from "react"
+import React, { useCallback, useEffect, useState } from "react"
+import downloadjs from "downloadjs"
+import html2canvas from "html2canvas"
+
 
 export default function Meme() {
-    const [meme, setMeme] = React.useState({
+    const [meme, setMeme] = useState({
         topText: "",
         bottomText: "",
         randomImage: "http://i.imgflip.com/1bij.jpg" 
     })
-    const [allMemes, setAllMemes] = React.useState([])
+    const [allMemes, setAllMemes] = useState([])
     
 
     
-    React.useEffect(() => {
+    useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
             .then(res => res.json())
             .then(data => setAllMemes(data.data.memes))
@@ -37,6 +40,15 @@ export default function Meme() {
             [name]: value
         }))
     }
+
+    const handleCaptureClick = useCallback(async () => {
+        const memeElement = document.querySelector('.meme')
+        if(!memeElement) return;
+
+        const canvas = await html2canvas(memeElement)
+        const dataURL = canvas.toDataURL('image/jpg')
+        downloadjs(dataURL, 'download.jpg', 'image/jpg')
+    }, [])
     
     return (
         <main>
@@ -65,9 +77,16 @@ export default function Meme() {
                 </button>
             </div>
             <div className="meme">
-                <img src={meme.randomImage} className="meme--image" alt="memeimg"/>
+                <img name='memeimg' src={meme.randomImage} className="meme--image" alt="memeimg"/>
                 <h2 className="meme--text top">{meme.topText}</h2>
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
+            </div>
+            <div className="downloadButton">
+                <button
+                    className="download--button"
+                    onClick={handleCaptureClick}>
+                    Download meme
+                </button>
             </div>
         </main>
     )
