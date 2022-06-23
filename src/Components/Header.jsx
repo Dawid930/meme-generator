@@ -9,7 +9,7 @@ export default function Header() {
                 className="header--image"
                 alt="trollface"
             />
-            <h2 className="header--title">Meme Generator</h2>
+            <h2 className="header--title">My Meme Generator</h2>
 
         </header>
     )
