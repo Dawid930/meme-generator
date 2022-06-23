@@ -46,6 +46,16 @@ main {
   margin-bottom: 17px;
 }
 
+@media screen and (max-width: 400px) {
+  .form {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 17px;
+    margin-bottom: 17px;
+  }
+}
+
+
 .form--input {
   font-family: "Karla", sans-serif;
   border-radius: 5px;
